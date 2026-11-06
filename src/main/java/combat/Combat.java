@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import entity.Character;
 import entity.Enemie;
 import entity.Player;
+import status.Status;
 import util.AffichageManager;
 
 public class Combat {
@@ -40,6 +41,10 @@ public class Combat {
 
         ((Player) characterList.stream().filter(character -> character instanceof Player).findFirst().get()).choseNextMove();
         for(Character character : characterList){
+            if(character.getStatusList().containtStatus(Status.SLEEP)){
+                AffichageManager.displayCharacterIsSleeping(character);
+                break;
+            }
             if(character.getCurrentHP()>0){
                 character.nextMove(characterList);
             }

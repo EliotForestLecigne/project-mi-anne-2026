@@ -100,4 +100,16 @@ public class AffichageManager {
         }
     }
 
+    public static void displayCharacterFallAslepp(Character character){
+        System.out.printf("%s fall asleep \n", character.getName());
+    }
+
+    public static void displayCharacterIsSleeping(Character character){
+        System.out.printf("%s is sleeping\n", character.getName());
+    }
+
+    public static void  dissplayCharacterWakeUp(Character character){
+        System.out.printf("%s wake up\n", character.getName());
+    }
+
 }

@@ -6,6 +6,7 @@ import action.Spell;
 import entity.Character;
 import status.Status;
 import status.StatusDuration;
+import util.AffichageManager;
 
 import java.util.List;
 
@@ -24,9 +25,11 @@ public class Sleep extends Spell {
 
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
+        AffichageManager.displaySpellOnOthers(attacker, this.getName(), defenders);
 
         for (Character defender : defenders){
             defender.getStatusList().addStatusDuration(Status.SLEEP, duration, defender);
+
         }
 
 
