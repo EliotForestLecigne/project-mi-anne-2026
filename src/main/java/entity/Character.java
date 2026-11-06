@@ -1,22 +1,23 @@
 package entity;
 
 import action.Action;
+import action.IAction;
 import status.StatusList;
 
 import java.util.List;
 
-public abstract class Character {
+public abstract class Character implements ICharacter{
     private Stat stat;
     private Stat tempStat = new Stat();
     private String name;
     private int currentHP;
     private int currentMP;
-    private List<Action> possibleActions;
+    private List<IAction> possibleActions;
     private StatusList statusList = new StatusList();
 
 
 
-    public abstract void nextMove(List<Character> characterList);
+    public abstract void nextMove(List<ICharacter> characterList);
 
     public Stat getStat() {
         return stat;
@@ -63,11 +64,11 @@ public abstract class Character {
         this.tempStat = tempStat;
     }
 
-    public List<Action> getPossibleActions() {
+    public List<IAction> getPossibleActions() {
         return possibleActions;
     }
 
-    public void setPossibleActions(List<Action> possibleActions) {
+    public void setPossibleActions(List<IAction> possibleActions) {
         this.possibleActions = possibleActions;
     }
 

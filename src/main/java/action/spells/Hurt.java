@@ -4,6 +4,7 @@ import action.Action;
 import action.ActionResult;
 import action.Spell;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 import util.AffichageManager;
 import util.RandomManager;
@@ -18,8 +19,8 @@ public class Hurt extends Spell {
     }
 
     @Override
-    public ActionResult actionActivation(Character attacker, List<Character> defenders) {
-        Character defender = defenders.get(0);
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
+        ICharacter defender = defenders.get(0);
 
         if(!checkMP(attacker)){
             return ActionResult.NOTENOUGHMP;

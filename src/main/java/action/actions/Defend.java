@@ -3,6 +3,7 @@ package action.actions;
 import action.Action;
 import action.ActionResult;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class Defend extends Action {
     }
 
     @Override
-    public ActionResult actionActivation(Character attacker, List<Character> defenders) {
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
 
 
         attacker.getStatusList().addStatusDuration(Status.DEFEND, 1, attacker);

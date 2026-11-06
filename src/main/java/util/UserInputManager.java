@@ -1,8 +1,11 @@
 package util;
 
 import action.Action;
+import action.IAction;
 import combat.Encounters;
 import entity.Enemie;
+import entity.IEnemie;
+import entity.IPlayer;
 import entity.Player;
 
 import java.util.ArrayList;
@@ -11,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInputManager {
-    public static Action InputPlayerAction(Player player){
+    public static IAction InputPlayerAction(IPlayer player){
 
         AffichageManager.AffichagePlayerChooseNextAction(player);
 
@@ -20,7 +23,7 @@ public class UserInputManager {
 
         boolean valideImput = false;
 
-        Action action = null;
+        IAction action = null;
 
         while (!valideImput){
             System.out.println("Enter choice :");
@@ -38,14 +41,14 @@ public class UserInputManager {
         return action;
     }
 
-    public  static List<Enemie> InputEncounter(){
+    public  static List<IEnemie> InputEncounter(){
         Scanner scanner= new Scanner(System.in);
 
         List<Encounters> encountersList = new ArrayList<>(EnumSet.allOf(Encounters.class));
 
         boolean valideImput = false;
 
-        List<Enemie> enemieList = null;
+        List<IEnemie> enemieList = null;
 
         AffichageManager.AffichageEncounterChoose(encountersList);
 

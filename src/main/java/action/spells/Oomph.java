@@ -4,6 +4,7 @@ import action.Action;
 import action.ActionResult;
 import action.Spell;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class Oomph extends Spell {
     }
 
     @Override
-    public ActionResult actionActivation(entity.Character attacker, List<Character> defenders) {
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         int duration = 4;
 
         if (!checkMP(attacker)) {

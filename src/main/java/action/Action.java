@@ -1,10 +1,12 @@
 package action;
 
 import entity.Character;
+import entity.ICharacter;
+
 
 import java.util.List;
 
-public abstract class Action {
+public abstract class Action implements IAction {
     private String name;
 
     public Action(String name) {
@@ -16,5 +18,5 @@ public abstract class Action {
         return name;
     }
 
-   public abstract ActionResult actionActivation(Character attacker, List<Character> defenders);
+   public abstract ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders);
 }

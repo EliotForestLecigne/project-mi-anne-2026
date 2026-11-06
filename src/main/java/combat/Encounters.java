@@ -1,6 +1,7 @@
 package combat;
 
 import entity.Enemie;
+import entity.IEnemie;
 import entity.enemies.Slime;
 
 import java.util.ArrayList;
@@ -15,14 +16,14 @@ SLIME("slime", new ArrayList<>(Arrays.asList( new Slime("Slime A"))));
         return name;
     }
 
-    public List<Enemie> getEnemies() {
+    public List<IEnemie> getEnemies() {
         return enemies;
     }
 
     private String name;
-    private List<Enemie> enemies;
+    private List<IEnemie> enemies;
 
-    private Encounters(String name, List<Enemie> enemies){
+    private Encounters(String name, List<IEnemie> enemies){
         this.name = name;
         this.enemies=enemies;
     }

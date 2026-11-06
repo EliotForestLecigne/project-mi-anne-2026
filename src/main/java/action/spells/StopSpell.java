@@ -4,6 +4,7 @@ import action.Action;
 import action.ActionResult;
 import action.Spell;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 import status.StatusDuration;
 
@@ -17,7 +18,7 @@ public class StopSpell extends Spell{
     }
 
     @Override
-    public ActionResult actionActivation(entity.Character attacker, List<Character> defenders) {
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
 
         int duration = 3;
 
@@ -27,7 +28,7 @@ public class StopSpell extends Spell{
 
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
-        for (entity.Character defender : defenders){
+        for (ICharacter defender : defenders){
             defender.getStatusList().addStatusDuration(Status.STOPSPELL, duration, defender);
         }
 

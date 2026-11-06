@@ -4,6 +4,7 @@ import action.Action;
 import action.ActionResult;
 import action.Spell;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 import status.StatusDuration;
 import util.AffichageManager;
@@ -16,7 +17,7 @@ public class Sleep extends Spell {
     }
 
     @Override
-    public ActionResult actionActivation(entity.Character attacker, List<Character> defenders) {
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         int duration = 3;
 
         if(!checkMP(attacker)){
@@ -27,7 +28,7 @@ public class Sleep extends Spell {
 
         AffichageManager.displaySpellOnOthers(attacker, this.getName(), defenders);
 
-        for (Character defender : defenders){
+        for (ICharacter defender : defenders){
             defender.getStatusList().addStatusDuration(Status.SLEEP, duration, defender);
 
         }

@@ -5,16 +5,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
+import entity.*;
 import entity.Character;
-import entity.Enemie;
-import entity.Player;
 import status.Status;
 import util.AffichageManager;
 
 public class Combat {
-    private List<Player> playerList;
-    private List<Enemie> enemieList;
-    private List<Character> characterList;
+    private List<IPlayer> playerList;
+    private List<IEnemie> enemieList;
+    private List<ICharacter> characterList;
 
     private boolean battleStop = false;
 
@@ -35,12 +34,12 @@ public class Combat {
         //change so that any character get chose next move
         characterList = characterList.reversed();
 
-        for(Character character : characterList){
+        for(ICharacter character : characterList){
             AffichageManager.characterInformation(character);
         }
 
-        ((Player) characterList.stream().filter(character -> character instanceof Player).findFirst().get()).choseNextMove();
-        for(Character character : characterList){
+        ((IPlayer) characterList.stream().filter(character -> character instanceof IPlayer).findFirst().get()).choseNextMove();
+        for(ICharacter character : characterList){
             if(character.getStatusList().containtStatus(Status.SLEEP)){
                 AffichageManager.displayCharacterIsSleeping(character);
                 break;
@@ -56,7 +55,7 @@ public class Combat {
     }
 
     public void endTurn(){
-        for (Character character : characterList){
+        for (ICharacter character : characterList){
             character.getStatusList().turnEnd(character);
         }
         characterList.removeIf(character -> character.getCurrentHP() <= 0);
@@ -83,7 +82,7 @@ public class Combat {
 //        }
     }
 
-    public Combat(List<Player> playerList, List<Enemie> enemieList) {
+    public Combat(List<IPlayer> playerList, List<IEnemie> enemieList) {
         this.playerList=playerList;
         this.enemieList=enemieList;
         this.characterList = new ArrayList<>();
@@ -91,7 +90,7 @@ public class Combat {
         characterList.addAll(enemieList);
     }
 
-    public List<Character> getCharacterList() {
+    public List<ICharacter> getCharacterList() {
         return characterList;
     }
 }

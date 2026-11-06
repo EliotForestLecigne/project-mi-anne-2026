@@ -4,6 +4,7 @@ import action.Action;
 import action.ActionResult;
 import action.Spell;
 import entity.Character;
+import entity.ICharacter;
 import status.Status;
 import util.AffichageManager;
 import util.RandomManager;
@@ -19,7 +20,7 @@ public class Heal extends Spell {
 
 
     @Override
-    public ActionResult actionActivation(Character attacker, List<Character> defenders) {
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         if(!checkMP(attacker)){
             return ActionResult.NOTENOUGHMP;
         }

@@ -1,6 +1,7 @@
 package status;
 
 import entity.Character;
+import entity.ICharacter;
 import entity.Stat;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class StatusList {
 
     private List<StatusDuration> statusDurations = new ArrayList<>();
 
-    public void addStatusDuration(Status status, int duration, Character character){
+    public void addStatusDuration(Status status, int duration, ICharacter character){
         if(this.containtStatus(status)){
            StatusDuration statusFound = this.getStatusDurationOfStatus(status);
 
@@ -31,7 +32,7 @@ public class StatusList {
 
     }
 
-    public void turnEnd(Character character){
+    public void turnEnd(ICharacter character){
 
         Iterator<StatusDuration> statusDurationIterator = statusDurations.iterator();
         while (statusDurationIterator.hasNext()){

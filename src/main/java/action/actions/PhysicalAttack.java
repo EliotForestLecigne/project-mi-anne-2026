@@ -3,6 +3,7 @@ package action.actions;
 import action.Action;
 import action.ActionResult;
 import entity.Character;
+import entity.ICharacter;
 import util.AffichageManager;
 import util.RandomManager;
 
@@ -14,9 +15,9 @@ public class PhysicalAttack extends Action {
     }
 
     @Override
-    public ActionResult actionActivation(Character attacker, List<Character> defenders) {
-        //TODO change that
-        Character defender = defenders.get(0);
+    public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
+
+        ICharacter defender = defenders.get(0);
 
         AffichageManager.displayAttack(attacker, defender);
 
