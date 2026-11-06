@@ -16,10 +16,14 @@ public class StatusList {
     private List<StatusDuration> statusDurations = new ArrayList<>();
 
     public void addStatusDuration(Status status, int duration, Character character){
-        if(statusDurations.stream().filter(statusDuration -> statusDuration.getStatus() == status).toList().size() == 1){
-           StatusDuration statusFound = statusDurations.stream().filter(statusDuration -> statusDuration.getStatus() == status).findFirst().get();
+        if(this.containtStatus(status)){
+           StatusDuration statusFound = this.getStatusDurationOfStatus(status);
+
+           //extend duration
            statusFound.setDurationLeft(statusFound.getDurationLeft() + duration);
         }else {
+
+            //create the status and apply its effect
             status.getStatusEffect().onApply(character);
             statusDurations.add(new StatusDuration(status, duration));
         }

@@ -10,7 +10,7 @@ import status.StatusDuration;
 import java.util.List;
 
 public class Sleep extends Spell {
-    protected Sleep() {
+    public Sleep() {
         super("Sleep",10);
     }
 
@@ -24,13 +24,9 @@ public class Sleep extends Spell {
 
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
+
         for (Character defender : defenders){
-            if(defender.getStatusList().containtStatus(Status.SLEEP)){
-                StatusDuration sleepStatus = defender.getStatusList().getStatusDurationOfStatus(Status.SLEEP);
-                sleepStatus.setDurationLeft(sleepStatus.getDurationLeft()+duration);
-            }else {
-                defender.getStatusList().addStatusDuration(Status.SLEEP, duration, defender);
-            }
+            defender.getStatusList().addStatusDuration(Status.SLEEP, duration, defender);
         }
 
 

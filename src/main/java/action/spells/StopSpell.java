@@ -28,12 +28,7 @@ public class StopSpell extends Spell{
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
         for (entity.Character defender : defenders){
-            if(defender.getStatusList().containtStatus(Status.STOPSPELL)){
-                StatusDuration sleepStatus = defender.getStatusList().getStatusDurationOfStatus(Status.SLEEP);
-                sleepStatus.setDurationLeft(sleepStatus.getDurationLeft()+duration);
-            }else {
-                defender.getStatusList().addStatusDuration(Status.STOPSPELL, duration, defender);
-            }
+            defender.getStatusList().addStatusDuration(Status.STOPSPELL, duration, defender);
         }
 
 
