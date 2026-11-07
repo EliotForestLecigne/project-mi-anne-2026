@@ -25,6 +25,9 @@ public class Hurt extends Spell {
         if(!checkMP(attacker)){
             return ActionResult.NOTENOUGHMP;
         }
+        if (checkSTOPSPEEL(attacker)){
+            return ActionResult.CANTUSE;
+        }
 
         AffichageManager.displaySpellOnOther(attacker,name,defender);
 

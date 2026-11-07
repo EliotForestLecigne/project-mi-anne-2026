@@ -25,6 +25,9 @@ public class StopSpell extends Spell{
         if(!checkMP(attacker)){
             return ActionResult.NOTENOUGHMP;
         }
+        if(checkSTOPSPEEL(attacker)){
+            return ActionResult.CANTUSE;
+        }
 
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
