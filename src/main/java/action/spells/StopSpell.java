@@ -13,7 +13,7 @@ import java.util.List;
 public class StopSpell extends Spell{
 
 
-    protected StopSpell() {
+    public StopSpell() {
         super("Stop Spell", 10);
     }
 
