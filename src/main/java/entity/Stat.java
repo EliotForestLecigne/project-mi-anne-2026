@@ -78,13 +78,24 @@ public class Stat {
         return defence;
     }
 
-    public void addStat(int maxHP, int maxMP, int strength, int defence, int agility, int evasionRate){
+    public void addStat(int maxHP, int maxMP, int strength, int defence, int agility, int evasionRate, int luck){
         this.maxHP += maxHP;
         this.maxMP += maxMP;
         this.strength += strength;
         this.defence += defence;
         this.agility += agility;
         this.evasionRate += evasionRate;
+        this.luck += luck;
+    }
+
+    public void addStat(Stat stat){
+        this.maxHP += stat.maxHP;
+        this.maxMP += stat.maxMP;
+        this.strength += stat.strength;
+        this.defence += stat.defence;
+        this.agility += stat.agility;
+        this.evasionRate += stat.evasionRate;
+        this.luck += stat.luck;
     }
 
     public int getLuck() {

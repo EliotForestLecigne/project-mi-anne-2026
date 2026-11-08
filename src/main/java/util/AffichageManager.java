@@ -5,10 +5,9 @@ import action.IAction;
 import action.ISpell;
 import action.Spell;
 import combat.Encounters;
+import entity.*;
 import entity.Character;
-import entity.ICharacter;
-import entity.IPlayer;
-import entity.Player;
+import level.Level;
 import status.StatusDuration;
 
 import java.util.List;
@@ -69,6 +68,9 @@ public class AffichageManager {
     public static void characterInformation(ICharacter character){
         System.out.printf("%s HP : %d/%d MP: %d/%d ", character.getName(), character.getCurrentHP(),
                 character.getStat().getMaxHP(), character.getCurrentMP(), character.getStat().getMaxMP());
+
+        if (character instanceof IPlayer) System.out.printf("level:%d ", ((IPlayer) character).getLevel());
+
         for (StatusDuration statusDuration : character.getStatusList().getStatusDurations()){
             System.out.printf("%s %d", statusDuration.getStatus().getName(), statusDuration.getDurationLeft());
         }
@@ -118,6 +120,25 @@ public class AffichageManager {
 
     public static void  dissplayCharacterWakeUp(ICharacter character){
         System.out.printf("%s wake up\n", character.getName());
+    }
+
+    public static void displayPlayerGainExp(IPlayer player, int expGain){
+        System.out.printf("%s gain %d exp\n", player.getName(), expGain);
+    }
+
+    public static void displayPlayerLevelUp(IPlayer player, Level level){
+        System.out.printf("%s level up to level %d\n", player.getName(), player.getLevel());
+        System.out.print("Gain ");
+        Stat stat = level.getStat();
+        if (stat.getMaxMP()>0) System.out.printf("%d HP ", stat.getMaxHP());
+        if(stat.getMaxMP()>0) System.out.printf("%d MP ", stat.getMaxMP());
+        if (stat.getStrength()>0) System.out.printf("%d strength ", stat.getStrength());
+        if (stat.getDefence()>0) System.out.printf("%d defence ", stat.getDefence());
+        if(stat.getAgility()>0) System.out.printf("%d agility ", stat.getAgility());
+        if (stat.getEvasionRate()>0) System.out.printf("%d evasion rate ", stat.getEvasionRate());
+        if(stat.getLuck()>0) System.out.printf("%d luck ",stat.getLuck());
+        if (level.getAction()!= null) System.out.printf("\n%s learn %s", player.getName(), level.getAction().getName());
+        System.out.println();
     }
 
 }

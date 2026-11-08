@@ -9,6 +9,9 @@ import action.spells.Heal;
 import action.spells.Hurt;
 import action.spells.Oomph;
 import action.spells.Sleep;
+import level.Level;
+import level.LevelList;
+import util.AffichageManager;
 import util.UserInputManager;
 
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class Player extends Character implements IPlayer{
     private int level;
     private int expCount;
     private IAction nextAction;
+    private LevelList levelList;
 
     public Player(){
         //default state
@@ -38,15 +42,24 @@ public class Player extends Character implements IPlayer{
     }
 
     public void levelUp(){
-        //check level and seach file
-        int maxHP = 0;
-        int maxMP = 0;
-        int strength = 0;
-        int defence = 0;
-        int agility = 0;
-        int evesionRate = 0;
-        this.getStat().addStat(maxHP,maxMP,strength,defence,agility,evesionRate);
 
+        if (levelList.levelExist(level+1)){
+            Level levelGain = levelList.giveNbLevel(level+1);
+            if(levelGain.getExpThreshold()<=expCount){
+                level++;
+                this.getStat().addStat(levelGain.getStat());
+                this.setCurrentHP(this.getCurrentHP() + levelGain.getStat().getMaxHP());
+                this.setCurrentMP(this.getCurrentMP() + levelGain.getStat().getMaxMP());
+
+                if (levelGain.getAction()!=null){
+                    this.getPossibleActions().add(levelGain.getAction());
+                }
+
+                AffichageManager.displayPlayerLevelUp(this, levelGain);
+
+                this.levelUp(); // in the case of multiple levelUp after one fight
+            }
+        }
     }
 
     public void choseNextMove(){
@@ -77,4 +90,10 @@ public class Player extends Character implements IPlayer{
     public void setExpCount(int expCount) {
         this.expCount = expCount;
     }
+
+    public int getLevel() {
+        return level;
+    }
+
+
 }

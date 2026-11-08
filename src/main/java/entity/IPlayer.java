@@ -16,4 +16,6 @@ public interface IPlayer extends ICharacter{
     int getExpCount();
 
     void setExpCount(int expCount);
+
+    int getLevel();
 }

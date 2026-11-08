@@ -68,6 +68,7 @@ public class Combat {
         if (enemieCount==0){
             battleStop=true;
             //battle win
+            battleWon();
         }
     }
 
@@ -76,10 +77,17 @@ public class Combat {
     }
 
     public void battleWon(){
-//        int expGain = enemieList.stream().mapToInt(Enemie::getExpGain).sum();
-//        for (Player player : playerList){
-//            player.
-//        }
+        int expGain = enemieList.stream().mapToInt(IEnemie::getExpGain).sum();
+        for (IPlayer player : playerList){
+            player.setExpCount(player.getExpCount() + expGain);
+
+            AffichageManager.displayPlayerGainExp(player, expGain);
+
+            //test
+            System.out.printf("%s : %d exp", player.getName(), player.getExpCount());
+
+            player.levelUp();
+        }
     }
 
     public Combat(List<IPlayer> playerList, List<IEnemie> enemieList) {
