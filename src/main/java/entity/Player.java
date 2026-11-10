@@ -12,6 +12,7 @@ import action.spells.Sleep;
 import level.Level;
 import level.LevelList;
 import util.AffichageManager;
+import util.JsonManager;
 import util.UserInputManager;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player extends Character implements IPlayer{
+
+
     private int level;
     private int expCount;
     private IAction nextAction;
@@ -34,6 +37,10 @@ public class Player extends Character implements IPlayer{
         this.setCurrentHP(this.getStat().getMaxHP());
         this.setCurrentMP(this.getStat().getMaxMP());
         this.setPossibleActions(new ArrayList<>(Arrays.asList(new PhysicalAttack(), new Heal(), new Hurt(), new Defend(), new Oomph(), new Sleep())));
+
+        JsonManager<LevelList> json = new JsonManager<>(LevelList.class);
+        levelList =  json.readAll("PlayerLevels.json").get(0);
+
     }
 
     public void gainExp(int expCount){

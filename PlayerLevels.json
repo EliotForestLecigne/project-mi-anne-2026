@@ -1,0 +1,34 @@
+[
+  {
+    "levelList": [
+      {
+        "stat": {
+          "maxHP": 10,
+          "maxMP": 10,
+          "strength": 10,
+          "defence": 10,
+          "agility": 10,
+          "evasionRate": 0,
+          "luck": 0
+        },
+        "levelNb": 2,
+        "expThreshold": 10
+      },
+      {
+        "stat": {
+          "maxHP": 0,
+          "maxMP": 0,
+          "strength": 0,
+          "defence": 1,
+          "agility": 1,
+          "evasionRate": 1,
+          "luck": 1
+        },
+        "action": "Stop Spell",
+        "levelNb": 3,
+        "expThreshold": 20
+      }
+    ],
+    "levelMax": 3
+  }
+]
