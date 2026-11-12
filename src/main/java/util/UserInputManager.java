@@ -56,14 +56,73 @@ public class UserInputManager {
             System.out.println("Enter choice :");
             int choise = scanner.nextInt();
             if( 0 < choise && choise -1 < encountersList.size()){
-                valideImput = true;
-                enemieList = encountersList.get(choise-1).getEnemies();
-
+                    enemieList = new ArrayList(encountersList.get(choise-1).getEnemies());
+                    valideImput=true;
             }
             else {
                 System.out.println("Invalide Imput");
             }
         }
         return enemieList;
+    }
+
+    public static IPlayer InputLoadSave(){
+        Scanner scanner= new Scanner(System.in);
+        boolean valideImput = false;
+
+        IPlayer player = null;
+
+        System.out.print("(1) New game\n" +
+                "(2) Load save");
+
+        while (!valideImput){
+            System.out.println("Enter choice :");
+            int choice = scanner.nextInt();
+            switch (choice){
+                case 1:
+                    String name = InputName();
+                    player = new Player(name);
+                    valideImput=true;
+                    break;
+                case 2:
+                    JsonManager<Player> jsonManager = new JsonManager<>(Player.class);
+                    player = jsonManager.readAll("save.json").get(0);
+                    valideImput= true;
+                    break;
+                default:
+                    System.out.println("Invalide Imput");
+                    break;
+            }
+        }
+        return player;
+    }
+
+    public static String InputName(){
+        Scanner scanner= new Scanner(System.in);
+
+        System.out.println("Enter name");
+
+        return scanner.nextLine();
+    }
+
+    public static int InputMainMenu(){
+        Scanner scanner= new Scanner(System.in);
+        boolean valideImput = false;
+
+        IPlayer player = null;
+
+        System.out.print("(1) Next fight\n" +
+                "(2) Heal\n" +
+                "(3) Save\n" +
+                "(4) Quit");
+
+        while (!valideImput){
+            System.out.println("Enter choice :");
+            int choice = scanner.nextInt();
+            if(choice <= 4 && choice>=1){
+                return choice;
+            }
+        }
+        return -1;
     }
 }
