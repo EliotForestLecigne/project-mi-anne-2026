@@ -12,7 +12,7 @@ import util.RandomManager;
 import java.util.List;
 
 public class Hurt extends Spell {
-    public String name = "Hurt";
+//    public String name = "Hurt";
 
     public Hurt() {
         super("Hurt",5);
@@ -29,7 +29,7 @@ public class Hurt extends Spell {
             return ActionResult.CANTUSE;
         }
 
-        AffichageManager.displaySpellOnOther(attacker,name,defender);
+        AffichageManager.displaySpellOnOther(attacker,getName(),defender);
 
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
         int damage = RandomManager.getInstance().getRandomIntBetween(20, 27);

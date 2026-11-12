@@ -12,7 +12,7 @@ import util.RandomManager;
 import java.util.List;
 
 public class Heal extends Spell {
-    public String name = "Heal";
+//    public String name = "Heal";
 
     public Heal() {
         super("Heal", 3);
@@ -29,7 +29,7 @@ public class Heal extends Spell {
         }
         attacker.setCurrentMP(attacker.getCurrentMP()-MPcost);
 
-        AffichageManager.displaySpellOnSelf(attacker, name);
+        AffichageManager.displaySpellOnSelf(attacker, getName());
         int HPheal = RandomManager.getInstance().getRandomIntBetween(20, 27);
         attacker.setCurrentHP(Math.min( attacker.getCurrentHP() + HPheal, attacker.getStat().getMaxHP()));
 
