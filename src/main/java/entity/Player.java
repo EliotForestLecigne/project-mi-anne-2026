@@ -43,6 +43,21 @@ public class Player extends Character implements IPlayer{
 
     }
 
+    public Player(String name){
+        //default state
+        level=1;
+        expCount=0;
+        this.setName(name);
+        this.setStat(new Stat(100, 100, 10, 1, 2, 1, 10));
+        this.setCurrentHP(this.getStat().getMaxHP());
+        this.setCurrentMP(this.getStat().getMaxMP());
+        this.setPossibleActions(new ArrayList<>(Arrays.asList(new PhysicalAttack(), new Heal(), new Hurt(), new Defend(), new Oomph(), new Sleep())));
+
+        JsonManager<LevelList> json = new JsonManager<>(LevelList.class);
+        levelList =  json.readAll("PlayerLevels.json").get(0);
+
+    }
+
     public void gainExp(int expCount){
         setExpCount(expCount + getExpCount());
 

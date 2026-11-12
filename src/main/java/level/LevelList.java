@@ -2,6 +2,7 @@ package level;
 
 import action.spells.StopSpell;
 import entity.Stat;
+import util.JsonManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +23,22 @@ public class LevelList {
 
     //for testing
     public LevelList(){
-        List<Level> levels = new ArrayList<>();
-        levels.add(new Level(new Stat(10,10,10, 10, 10, 0, 0),
-                null,
-                2,
-                10));
-        levels.add(new Level(new Stat(0,0,0,1,1,1, 1),
-                new StopSpell(),
-                3,
-                20));
-        this.levelList=levels;
 
-        this.levelMax = levelList.size()+1;
+//        List<Level> levels = new ArrayList<>();
+//        levels.add(new Level(new Stat(10,10,10, 10, 10, 0, 0),
+//                null,
+//                2,
+//                10));
+//        levels.add(new Level(new Stat(0,0,0,1,1,1, 1),
+//                new StopSpell(),
+//                3,
+//                20));
+//        this.levelList=levels;
+//
+//        this.levelMax = levelList.size()+1;
+//
+//        JsonManager<LevelList> json = new JsonManager<>(LevelList.class);
+//        json.append("PlayerLevels.json", this);
     }
 
     public boolean levelExist(int nbLevel){
