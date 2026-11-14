@@ -10,16 +10,23 @@ import entity.Character;
 import status.Status;
 import util.AffichageManager;
 
+/// Manage the combat between the players and enemies
 public class Combat {
+
+    /// The players
     private List<IPlayer> playerList;
+    /// The enemies
     private List<IEnemie> enemieList;
+    /// The players + enemies
     private List<ICharacter> characterList;
 
+    /// Check if a battle is ended or not
     private boolean battleStop = false;
 
-
+    /// Turn number (used only for display)
     private int turnNumber = 1;
 
+    /// Start the battle till it stop
     public void begin(){
         while (!battleStop){
             turn();
@@ -30,20 +37,24 @@ public class Combat {
 
         AffichageManager.turnStart(turnNumber);
 
+        // Decide the turn order by the combine agility of each character
         characterList.sort(Comparator.comparingInt(a -> a.getStat().getAgility() + a.getTempStat().getAgility()));
-        //change so that any character get chose next move
         characterList = characterList.reversed();
 
         for(ICharacter character : characterList){
             AffichageManager.characterInformation(character);
         }
 
+        //Player input for next attack
         ((IPlayer) characterList.stream().filter(character -> character instanceof IPlayer).findFirst().get()).choseNextMove();
+
         for(ICharacter character : characterList){
+            //Character doesnt act if is sleeping
             if(character.getStatusList().containtStatus(Status.SLEEP)){
                 AffichageManager.displayCharacterIsSleeping(character);
                 break;
             }
+            //Character act only if HP positive (is alive)
             if(character.getCurrentHP()>0){
                 character.nextMove(characterList);
             }
@@ -54,13 +65,21 @@ public class Combat {
         endTurn();
     }
 
+
+    /// Check every change in the end turn (status, victory/loss condition)
     public void endTurn(){
+        //Status effect on a endTurn
         for (ICharacter character : characterList){
             character.getStatusList().turnEnd(character);
         }
+
+        //calculate the number of player/enemie with HP>0
+        //need to replace with better implementation
         characterList.removeIf(character -> character.getCurrentHP() <= 0);
         long enemieCount = enemieList.stream().filter(enemie -> enemie.getCurrentHP() > 0).count();
         long playerCount = playerList.stream().filter(player -> player.getCurrentHP() > 0).count();
+
+        //If no player or no enemie still alive battle end
         if(playerCount ==0){
             battleStop = true;
             //battle lost
@@ -72,19 +91,19 @@ public class Combat {
         }
     }
 
+    /// Game over
     public void battleLost(){
 
     }
 
+    ///battle won
+    /// player gain exp and possibly level up
     public void battleWon(){
         int expGain = enemieList.stream().mapToInt(IEnemie::getExpGain).sum();
         for (IPlayer player : playerList){
             player.setExpCount(player.getExpCount() + expGain);
 
             AffichageManager.displayPlayerGainExp(player, expGain);
-
-            //test
-            System.out.printf("%s : %d exp", player.getName(), player.getExpCount());
 
             player.levelUp();
         }

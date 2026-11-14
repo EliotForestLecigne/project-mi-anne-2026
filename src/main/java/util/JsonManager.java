@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-
+/// Manage the lecture and writing of the json using Gson
 public class JsonManager<T> {
         private final Gson gson;
         private final Type listType;

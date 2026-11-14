@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+/// Wrapper for a list containing the StatusDuration
 public class StatusList {
     public List<StatusDuration> getStatusDurations() {
         return statusDurations;
@@ -16,6 +17,7 @@ public class StatusList {
 
     private List<StatusDuration> statusDurations = new ArrayList<>();
 
+    /// Add a status duration to a character Status list or if already present extend the duration
     public void addStatusDuration(Status status, int duration, ICharacter character){
         if(this.containtStatus(status)){
            StatusDuration statusFound = this.getStatusDurationOfStatus(status);
@@ -32,6 +34,7 @@ public class StatusList {
 
     }
 
+    /// remove a turn of all the turnLeft of every statusDuration and remove if 0
     public void turnEnd(ICharacter character){
 
         Iterator<StatusDuration> statusDurationIterator = statusDurations.iterator();
@@ -44,22 +47,14 @@ public class StatusList {
                 statusDuration.setDurationLeft(statusDuration.getDurationLeft()-1);
             }
         }
-
-//        for (StatusDuration statusDuration : statusDurations){
-//            if(statusDuration.getDurationLeft()==1){
-//                statusDuration.getStatus().getStatusEffect().onRemove(character);
-//                statusDurations.remove(statusDuration); //TODO : check if work correctly
-//            }
-//            else {
-//                statusDuration.setDurationLeft(statusDuration.getDurationLeft()-1);
-//            }
-//        }
     }
 
+    /// Check if a status is contained in the list
     public boolean containtStatus(Status status){
         return statusDurations.stream().anyMatch(statusDuration -> statusDuration.getStatus().equals(status));
     }
 
+    /// Return the statusDuration of a status present in the list
     public StatusDuration getStatusDurationOfStatus(Status status){
         return statusDurations.stream().filter(statusDuration -> statusDuration.getStatus().equals(status)).findFirst().get();
     }

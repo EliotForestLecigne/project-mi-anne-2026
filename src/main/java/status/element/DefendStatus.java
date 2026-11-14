@@ -3,6 +3,7 @@ package status.element;
 import entity.Character;
 import entity.ICharacter;
 
+/// DefendStatus give a temp defence equal to the character defense
 public class DefendStatus implements StatusEffect{
     private int tmp;
 

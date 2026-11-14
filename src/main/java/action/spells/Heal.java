@@ -12,13 +12,12 @@ import util.RandomManager;
 import java.util.List;
 
 public class Heal extends Spell {
-//    public String name = "Heal";
 
     public Heal() {
         super("Heal", 3);
     }
 
-
+    /// Heal the attacker for 20 to 27 HP for 3 MP
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         if(!checkMP(attacker)){

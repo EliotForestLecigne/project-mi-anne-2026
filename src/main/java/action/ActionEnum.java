@@ -4,6 +4,8 @@ import action.actions.Defend;
 import action.actions.PhysicalAttack;
 import action.spells.*;
 
+
+/// List the different Action possible to decrypt the different json
 public enum ActionEnum {
 
 STOPSPELL(new StopSpell(), new StopSpell().getName()),

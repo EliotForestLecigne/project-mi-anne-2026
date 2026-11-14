@@ -17,6 +17,7 @@ public class StopSpell extends Spell{
         super("Stop Spell", 10);
     }
 
+    /// Give the STOPSPELL status to every defender in defenders for 3 turn at a 10 MPcost
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
 

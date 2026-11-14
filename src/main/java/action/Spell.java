@@ -4,6 +4,7 @@ import entity.Character;
 import entity.ICharacter;
 import status.Status;
 
+/// Extension of an action, who require an MPcost and is unusable by the status STOPSPELL
 public abstract class Spell extends Action implements ISpell{
     public final int MPcost;
 

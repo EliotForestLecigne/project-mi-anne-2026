@@ -3,6 +3,7 @@ package status.element;
 import entity.Character;
 import entity.ICharacter;
 
+/// OomphStatus give a temp strength equal to the character strength
 public class OomphStatus implements StatusEffect{
     private int tmp;
 

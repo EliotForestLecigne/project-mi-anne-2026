@@ -8,6 +8,7 @@ import util.exception.LevelDontExisteException;
 import java.util.ArrayList;
 import java.util.List;
 
+/// Wrapper to put the levels in a list and method that manage them
 public class LevelList {
     private List<Level> levelList;
     private int levelMax;
@@ -42,10 +43,12 @@ public class LevelList {
 //        json.append("PlayerLevels.json", this);
     }
 
+    /// Check if the level exist in the list in a naive manner
     public boolean levelExist(int nbLevel){
         return nbLevel<=levelMax;
     }
 
+    /// Give the level of the nblevel
     public Level giveNbLevel(int nblevel){
         return levelList.stream().filter(level -> level.getLevelNb()==nblevel).findFirst().orElseThrow(()-> new LevelDontExisteException("Level "+nblevel+"doesn't exist"));
     }

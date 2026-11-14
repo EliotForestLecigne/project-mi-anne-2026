@@ -13,6 +13,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Scanner;
 
+/// Manage the user input and lecture
 public class UserInputManager {
     public static IAction InputPlayerAction(IPlayer player){
 

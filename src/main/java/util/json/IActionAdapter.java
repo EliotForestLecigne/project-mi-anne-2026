@@ -8,6 +8,7 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Objects;
 
+/// Adapter for IAction in the json by linking a string to different Action with ActionEnum
 public class IActionAdapter implements JsonSerializer<IAction>, JsonDeserializer<IAction> {
     @Override
     public IAction deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

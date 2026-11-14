@@ -15,6 +15,7 @@ public class Oomph extends Spell {
         super("Oomph",10);
     }
 
+    /// Give the status OOMPH to the attacker for 10 MP and 4 turn
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         int duration = 4;

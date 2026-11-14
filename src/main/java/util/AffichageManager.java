@@ -12,18 +12,11 @@ import status.StatusDuration;
 
 import java.util.List;
 
+/// Manage the display of information
 public class AffichageManager {
-//    private static AffichageManager Instance;
 
     public AffichageManager() {
     }
-
-//    public static AffichageManager getInstance() {
-//        if(Instance == null){
-//            return new AffichageManager();
-//        }
-//        return Instance;
-//    }
 
     public static void displayAttack(ICharacter attacker, ICharacter defender){
         System.out.printf("%s attack %s \n", attacker.getName(), defender.getName());

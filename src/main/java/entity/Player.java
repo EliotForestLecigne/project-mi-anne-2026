@@ -21,12 +21,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+
+/// Extension of a character controllable by the user and that can level up
 public class Player extends Character implements IPlayer{
 
-
+    /// Current level
     private int level;
+    /// Total of exp gained
     private int expCount;
+    /// Stockage of the action selected by the user
     private IAction nextAction;
+    /// The levels of the player that they can gain
     private LevelList levelList;
 
     public Player(){
@@ -73,8 +78,10 @@ public class Player extends Character implements IPlayer{
 
     }
 
+    /// Level sequence
     public void levelUp(){
-
+        // verify if the next level exist then if the exp threshold as been past
+        //if yes then gain the stat and move stock in the level
         if (levelList.levelExist(level+1)){
             Level levelGain = levelList.giveNbLevel(level+1);
             if(levelGain.getExpThreshold()<=expCount){
@@ -94,6 +101,7 @@ public class Player extends Character implements IPlayer{
         }
     }
 
+    /// Ask the user for the next action
     public void choseNextMove(){
 
 
@@ -102,10 +110,10 @@ public class Player extends Character implements IPlayer{
 
     }
 
+    /// Activate the action stock in nextAction
     @Override
     public void nextMove(List<ICharacter> characterList) {
-        //TODO temp implemetation
-         //characterList.remove(this);
+        //need change if multiple players in a combat
          List<ICharacter> defenders = new ArrayList<>(characterList);
          defenders.remove(this);
         nextAction.actionActivation(this, defenders);

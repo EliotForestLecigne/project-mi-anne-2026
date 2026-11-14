@@ -2,6 +2,7 @@ package entity;
 
 import util.exception.InvalidInputException;
 
+/// Stock the different statistic a Character
 public class Stat {
     private int maxHP;
     private int maxMP;

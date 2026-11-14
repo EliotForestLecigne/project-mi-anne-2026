@@ -6,9 +6,12 @@ import util.RandomManager;
 
 import java.util.List;
 
+/// Extension of a character non-controllable by the User
 public class Enemie extends Character implements IEnemie{
+    /// The exp given when defeated
     private int expGain;
 
+    /// Choose its next move at random and used it
     @Override
     public void nextMove(List<ICharacter> characterList) {
         List<ICharacter> defenders = characterList.stream().filter(character -> character instanceof Player).toList();

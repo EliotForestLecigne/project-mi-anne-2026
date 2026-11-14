@@ -2,6 +2,7 @@ package util;
 
 import java.util.Random;
 
+/// Manage the random element of program
 public final class RandomManager {
     private final Random random;
     private static final RandomManager INSTANCE = new RandomManager();
@@ -13,13 +14,6 @@ public final class RandomManager {
     private RandomManager(long seed){
         this.random=new Random(seed);
     }
-
-//    public static RandomManager getInstance(long seed) {
-//        if(INSTANCE == null){
-//            return new RandomManager(seed);
-//        }
-//        return INSTANCE;
-//    }
 
     public static RandomManager getInstance() {
         if(INSTANCE == null){

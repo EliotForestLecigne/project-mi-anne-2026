@@ -14,6 +14,7 @@ public class PhysicalAttack extends Action {
         super("Physical Attack");
     }
 
+    /// Deal physical damage using attack stat of attacker on the first element of defenders
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
 

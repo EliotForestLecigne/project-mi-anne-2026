@@ -1,5 +1,6 @@
 package status;
 
+/// Link the status and its duration
 public class StatusDuration {
     private Status status;
     private int durationLeft;

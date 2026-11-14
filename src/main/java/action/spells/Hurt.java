@@ -12,12 +12,12 @@ import util.RandomManager;
 import java.util.List;
 
 public class Hurt extends Spell {
-//    public String name = "Hurt";
 
     public Hurt() {
         super("Hurt",5);
     }
 
+    /// Deal 20 to 27 HP damage to the first element of defenders for a 5 MP cost to attacker
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         ICharacter defender = defenders.get(0);

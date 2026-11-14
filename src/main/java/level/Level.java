@@ -4,10 +4,15 @@ import action.IAction;
 import entity.Stat;
 import status.Status;
 
+/// The element of a level for a Player
 public class Level {
+    /// Statistic gain by the player
     private Stat stat;
+    /// Action unlock for the player
     private IAction action;
+    /// Number of the level
     private int levelNb;
+    /// The exp needed for this level
     private int expThreshold;
 
     public Level(Stat stat, IAction action, int levelNb, int expThreshold) {

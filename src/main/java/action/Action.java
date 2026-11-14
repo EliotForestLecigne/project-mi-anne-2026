@@ -7,6 +7,7 @@ import entity.ICharacter;
 import java.util.List;
 
 public abstract class Action implements IAction {
+    /// name : used to link the class to the json
     private String name;
 
     public Action(String name) {

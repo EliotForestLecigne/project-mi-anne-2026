@@ -6,7 +6,10 @@ import util.exception.InvalidInputException;
 
 import java.lang.reflect.Type;
 
+/// Adapter for Stat used for the Json
 public class StatAdapter  implements JsonDeserializer<Stat> {
+
+    /// Change for the default deserialize to use the constructor of the class and the Exception it can throw
     @Override
     public Stat deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonObject = jsonElement.getAsJsonObject();

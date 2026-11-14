@@ -13,11 +13,13 @@ public class Defend extends Action {
         super("Defend");
     }
 
+    /// Add the status defend for 1 turn to attacker
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
 
 
         attacker.getStatusList().addStatusDuration(Status.DEFEND, 1, attacker);
+
 
 
         return ActionResult.BOOST;

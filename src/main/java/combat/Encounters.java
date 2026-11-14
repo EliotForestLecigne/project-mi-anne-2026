@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/// List the different encounters so the player can select the one they want to fight
 public enum Encounters {
 SLIME("slime", new ArrayList<>(Arrays.asList( new Slime("Slime A"))));
 

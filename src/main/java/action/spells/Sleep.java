@@ -16,6 +16,7 @@ public class Sleep extends Spell {
         super("Sleep",10);
     }
 
+    /// Give the SLEEP status at every element of defenders for 3 turn at a 10 MPcost
     @Override
     public ActionResult actionActivation(ICharacter attacker, List<ICharacter> defenders) {
         int duration = 3;
