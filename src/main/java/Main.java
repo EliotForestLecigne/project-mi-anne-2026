@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
     static void main(String[] args) {
 
-        IPlayer player;
+        IPlayer player = null;
             JsonManager<Player> jsonManager = new JsonManager<>(Player.class);
             List<Player> playerJsonList = jsonManager.readAll("save.json");
 
@@ -35,6 +35,9 @@ public class Main {
                    enemieList=UserInputManager.InputEncounter();
                    Combat combat = new Combat(playerList, enemieList);
                    combat.begin();
+                   if(combat.isBattleLost()){
+                       return;
+                   }
                    break;
                case 2:
                    for (IPlayer player1 : playerList){

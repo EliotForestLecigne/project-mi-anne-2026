@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.sun.tools.javac.Main;
 import entity.*;
 import entity.Character;
 import status.Status;
@@ -22,6 +23,9 @@ public class Combat {
 
     /// Check if a battle is ended or not
     private boolean battleStop = false;
+
+    /// Check if the battle was lost or won
+    private boolean battleLost = false;
 
     /// Turn number (used only for display)
     private int turnNumber = 1;
@@ -83,6 +87,7 @@ public class Combat {
         if(playerCount ==0){
             battleStop = true;
             //battle lost
+            this.battleLost();
         }
         if (enemieCount==0){
             battleStop=true;
@@ -93,12 +98,17 @@ public class Combat {
 
     /// Game over
     public void battleLost(){
+        System.out.println("GAME OVER");
 
+        battleLost=true;
     }
 
     ///battle won
     /// player gain exp and possibly level up
     public void battleWon(){
+
+        System.out.println("BATTLE WON");
+
         int expGain = enemieList.stream().mapToInt(IEnemie::getExpGain).sum();
         for (IPlayer player : playerList){
             player.setExpCount(player.getExpCount() + expGain);
@@ -119,5 +129,9 @@ public class Combat {
 
     public List<ICharacter> getCharacterList() {
         return characterList;
+    }
+
+    public boolean isBattleLost() {
+        return battleLost;
     }
 }
