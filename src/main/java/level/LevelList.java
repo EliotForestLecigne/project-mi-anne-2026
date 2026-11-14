@@ -23,6 +23,10 @@ public class LevelList {
         return levelList;
     }
 
+    public int getLevelMax() {
+        return levelMax;
+    }
+
     //for testing
     public LevelList(){
 
