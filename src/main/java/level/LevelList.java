@@ -3,6 +3,7 @@ package level;
 import action.spells.StopSpell;
 import entity.Stat;
 import util.JsonManager;
+import util.exception.LevelDontExisteException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,6 @@ public class LevelList {
     }
 
     public Level giveNbLevel(int nblevel){
-        //TODO add a throw if
-        return levelList.stream().filter(level -> level.getLevelNb()==nblevel).findFirst().get();
+        return levelList.stream().filter(level -> level.getLevelNb()==nblevel).findFirst().orElseThrow(()-> new LevelDontExisteException("Level "+nblevel+"doesn't exist"));
     }
 }
