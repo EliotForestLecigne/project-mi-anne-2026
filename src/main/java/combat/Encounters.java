@@ -17,6 +17,10 @@ SLIME("slime", new ArrayList<>(Arrays.asList( new Slime("Slime A"))));
     }
 
     public List<IEnemie> getEnemies() {
+        for(IEnemie enemie : enemies){
+            enemie.setCurrentHP(enemie.getStat().getMaxHP());
+            enemie.setCurrentMP(enemie.getStat().getMaxMP());
+        }
         return enemies;
     }
 
