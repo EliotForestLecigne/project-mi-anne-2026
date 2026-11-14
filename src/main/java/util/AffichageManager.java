@@ -123,7 +123,7 @@ public class AffichageManager {
         System.out.printf("%s level up to level %d\n", player.getName(), player.getLevel());
         System.out.print("Gain ");
         Stat stat = level.getStat();
-        if (stat.getMaxMP()>0) System.out.printf("%d HP ", stat.getMaxHP());
+        if (stat.getMaxHP()>0) System.out.printf("%d HP ", stat.getMaxHP());
         if(stat.getMaxMP()>0) System.out.printf("%d MP ", stat.getMaxMP());
         if (stat.getStrength()>0) System.out.printf("%d strength ", stat.getStrength());
         if (stat.getDefence()>0) System.out.printf("%d defence ", stat.getDefence());
