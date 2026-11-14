@@ -14,6 +14,7 @@ import level.LevelList;
 import util.AffichageManager;
 import util.JsonManager;
 import util.UserInputManager;
+import util.exception.InvalidInputException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,8 +54,17 @@ public class Player extends Character implements IPlayer{
         this.setCurrentMP(this.getStat().getMaxMP());
         this.setPossibleActions(new ArrayList<>(Arrays.asList(new PhysicalAttack(), new Heal(), new Hurt(), new Defend(), new Oomph(), new Sleep())));
 
+
         JsonManager<LevelList> json = new JsonManager<>(LevelList.class);
-        levelList =  json.readAll("PlayerLevels.json").get(0);
+        List<LevelList> result = null;
+        try {
+            result =  json.readAll("PlayerLevels.json");
+        }catch (InvalidInputException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+        this.levelList=result.get(0);
+
 
     }
 

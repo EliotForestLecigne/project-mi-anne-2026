@@ -1,5 +1,7 @@
 package entity;
 
+import util.exception.InvalidInputException;
+
 public class Stat {
     private int maxHP;
     private int maxMP;
@@ -21,6 +23,9 @@ public class Stat {
     }
 
     public Stat(int maxHP, int maxMP, int strength, int defence, int agility, int evasionRate, int luck) {
+        if(maxHP<0 || maxMP<0|| strength<0||defence<0|| agility<0|| evasionRate<0|| luck<0){
+            throw new InvalidInputException("Stat element need to be positive or 0");
+        }
         this.maxHP = maxHP;
         this.maxMP = maxMP;
         this.strength = strength;

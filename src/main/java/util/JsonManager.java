@@ -1,10 +1,13 @@
 package util;
 
 import action.IAction;
+import action.ISpell;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import entity.Stat;
 import util.json.IActionAdapter;
+import util.json.StatAdapter;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,6 +32,7 @@ public class JsonManager<T> {
             GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
 
             builder.registerTypeAdapter(IAction.class, new IActionAdapter());
+            builder.registerTypeAdapter(Stat.class, new StatAdapter());
 
             this.gson = builder.create();
         }
