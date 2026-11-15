@@ -2,6 +2,7 @@ package combat;
 
 import entity.Enemie;
 import entity.IEnemie;
+import entity.enemies.Prestidigitator;
 import entity.enemies.Slime;
 
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.List;
 
 /// List the different encounters so the player can select the one they want to fight
 public enum Encounters {
-SLIME("slime", new ArrayList<>(Arrays.asList( new Slime("Slime A"))));
+SLIME("slime", new ArrayList<>(Arrays.asList( new Slime("Slime A")))),
+    PRESTIDIGITATOR("prestidigitator", new ArrayList<>(Arrays.asList( new Prestidigitator("Prestidigitator A"))));
 
 
     public String getName() {
