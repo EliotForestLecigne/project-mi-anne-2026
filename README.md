@@ -60,7 +60,15 @@ The two using the Gson libraries.
 
 ## SOLID
 
+Single Responsability : each class has a unique usage of either action on itself (ex : Character), on external element (ex : AffichageManager, JsonManager), or on a unique class (ex : Combat or Action with Character)
 
+Open/Closed : applied through the used of polymorphism in the Combat class
+
+Liskov Substitution Principle : each important class (like Character) is first created as a Interface (like IAction) with the only the bare method defined and than possibly extended if need (like with ISpell)
+
+Interface Segregation Principle : Same principal as the precedent, interface are clearly define with the bare necessary and extended if need (IAction and ISpell)
+
+Dependency Inversion Principle : Each class depend only on different bare interfaces (exemple : Combat does'nt use Player and Enemie but their interfaces IPlayer and IEnemie)
 
 ## Run the test
 
