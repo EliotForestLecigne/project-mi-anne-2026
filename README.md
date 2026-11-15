@@ -5,7 +5,7 @@ Created with java 25 using JUnit for the Unit Test and Gson for the jsons.
 
 ## Run 
 
-Through IntelliJ, use the Launch profile and use the green play.
+Through IntelliJ, select the Main class and run it through the current file profile and the green play.
 
 ## Features 
 
@@ -64,5 +64,5 @@ The two using the Gson libraries.
 
 ## Run the test
 
-Through IntelliJ, use the All in Projectmi-annee2026 profile and use the green play.
+Through IntelliJ, create a new JUnit profile and select all in the package for the test selection. Them launch the profile.
 
