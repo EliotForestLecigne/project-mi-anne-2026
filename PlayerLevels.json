@@ -3,32 +3,60 @@
     "levelList": [
       {
         "stat": {
-          "maxHP": 10,
-          "maxMP": 10,
-          "strength": 10,
-          "defence": 10,
-          "agility": 10,
+          "maxHP": 6,
+          "maxMP": 0,
+          "strength": 1,
+          "defence": 1,
+          "agility": 0,
           "evasionRate": 0,
           "luck": 0
         },
         "levelNb": 2,
-        "expThreshold": 10
+        "expThreshold": 7
       },
       {
         "stat": {
-          "maxHP": 0,
-          "maxMP": 0,
-          "strength": 0,
+          "maxHP": 2,
+          "maxMP": 10,
+          "strength": 2,
           "defence": 1,
-          "agility": 1,
-          "evasionRate": 1,
+          "agility": 2,
+          "evasionRate": 5,
           "luck": 1
         },
-        "action": "Stop Spell",
+        "action": "Heal",
         "levelNb": 3,
-        "expThreshold": 20
+        "expThreshold": 23
+      },
+      {
+        "stat": {
+          "maxHP": 6,
+          "maxMP": 5,
+          "strength": 0,
+          "defence": 4,
+          "agility": 2,
+          "evasionRate": 0,
+          "luck": 0
+        },
+        "action": "Hurt",
+        "levelNb": 4,
+        "expThreshold": 47
+      },
+      {
+        "stat": {
+          "maxHP":4,
+          "maxMP":4,
+          "strength": 5,
+          "defence": 10,
+          "agility": 2,
+          "evasionRate": 0,
+          "luck": 0
+        },
+        "action": "Sleep",
+        "levelNb": 5,
+        "expThreshold": 110
       }
     ],
-    "levelMax": 3
+    "levelMax": 5
   }
 ]

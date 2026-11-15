@@ -54,10 +54,10 @@ public class Player extends Character implements IPlayer{
         level=1;
         expCount=0;
         this.setName(name);
-        this.setStat(new Stat(100, 100, 10, 1, 2, 1, 10));
+        this.setStat(new Stat(10, 0, 10, 1, 2, 1, 10));
         this.setCurrentHP(this.getStat().getMaxHP());
         this.setCurrentMP(this.getStat().getMaxMP());
-        this.setPossibleActions(new ArrayList<>(Arrays.asList(new PhysicalAttack(), new Heal(), new Hurt(), new Defend(), new Oomph(), new Sleep())));
+        this.setPossibleActions(new ArrayList<>(Arrays.asList(new PhysicalAttack(), new Defend(), new Oomph())));
 
 
         JsonManager<LevelList> json = new JsonManager<>(LevelList.class);
