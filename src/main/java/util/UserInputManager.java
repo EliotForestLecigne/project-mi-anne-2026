@@ -74,7 +74,7 @@ public class UserInputManager {
         IPlayer player = null;
 
         System.out.print("(1) New game\n" +
-                "(2) Load save");
+                "(2) Load save\n");
 
         while (!valideImput){
             System.out.println("Enter choice :");
@@ -115,7 +115,7 @@ public class UserInputManager {
         System.out.print("(1) Next fight\n" +
                 "(2) Heal\n" +
                 "(3) Save\n" +
-                "(4) Quit");
+                "(4) Quit\n");
 
         while (!valideImput){
             System.out.println("Enter choice :");

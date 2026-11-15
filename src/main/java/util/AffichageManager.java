@@ -65,7 +65,7 @@ public class AffichageManager {
         if (character instanceof IPlayer) System.out.printf("level:%d ", ((IPlayer) character).getLevel());
 
         for (StatusDuration statusDuration : character.getStatusList().getStatusDurations()){
-            System.out.printf("%s %d", statusDuration.getStatus().getName(), statusDuration.getDurationLeft());
+            System.out.printf("%s %d ", statusDuration.getStatus().getName(), statusDuration.getDurationLeft());
         }
         System.out.println();
 
@@ -73,7 +73,7 @@ public class AffichageManager {
 
 
     public static void AffichagePlayerChooseNextAction(IPlayer player){
-        System.out.println("Choisi ton action ce tour :");
+        System.out.println("Choose your action :");
         int nb = 1;
         for (IAction action :  player.getPossibleActions()){
             System.out.printf("(%d) ", nb);
@@ -82,8 +82,6 @@ public class AffichageManager {
             }else {
                 AffichageActionInChoose(action);
             }
-
-            //TODO : use polymorphisme
             nb++;
         }
     }
@@ -96,10 +94,11 @@ public class AffichageManager {
         System.out.println(String.format("%s MP:%d", spell.getName(),  spell.getMPcost() ));    }
 
     public  static void AffichageEncounterChoose(List<Encounters> encountersList){
-        System.out.println("Choisi ton combat :");
+        System.out.println("Choose your fight :");
         int nb = 1;
         for (Encounters encounter : encountersList){
             System.out.printf("(%d) %s\n", nb, encounter.getName());
+            nb++;
         }
     }
 
